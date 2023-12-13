@@ -2,6 +2,8 @@
 let _minutes = 0;
 let _seconds = 0;
 let _timer
+// cordova 
+/* document.addEventListener("backbutton", BackToHome, false); */
 // Menu
 function Menu() {
    var menu = document.querySelector('menu');
@@ -32,6 +34,9 @@ function BackToHome(){
    Hide(tabbar);
    StopTimer();
    History();
+   /* if (document.querySelector('#home').classList.contains('show')) {
+      navigator.app.exitApp();
+   } */
 }
 // Start
 function Start(){
