@@ -222,7 +222,6 @@ function Focus(){
          SetHistory();
       }
    });
-   SetHistory();
 }
 // Test
 function Test(){
