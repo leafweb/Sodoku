@@ -463,7 +463,11 @@ button {
 }
 button:disabled {
    background: var(--surface-80)!important;
-   color: var(--on-surface-10)!important;
+   color: var(--on-surface-20)!important;
+   opacity: 0.6;
+}
+button:disabled>ripple {
+   background: var(--error);
 }
 button.tonal {
   background: var(--primary-container);

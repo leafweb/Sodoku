@@ -161,6 +161,7 @@ function History() {
    } else {
       level.innerHTML = levelHistory;
    }
+   XP(0)
    Focus();
 }
 function SetHistory() {
@@ -291,10 +292,16 @@ function True(){
 }
 // XP 
 function XP(x){
+   var solveBtn = document.querySelector('#solve-btn');
    var xp = document.querySelector('#xp');
    var num = Number(xp.innerHTML);
    num = num + x;
    xp.innerHTML = num;
+   if (num >= 30) {
+      solveBtn.disabled = false;
+   } else {
+      solveBtn.disabled = true;
+   }
    SetHistory();
 }
 // Timer 
@@ -351,6 +358,8 @@ function Solve() {
       Hide(active,'error');
    }
    SetHistory();
+   XP(-30);
+   True();
 }
 // Solve All
 function SolveAll() {
