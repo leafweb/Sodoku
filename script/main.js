@@ -297,7 +297,7 @@ function XP(x){
    var num = Number(xp.innerHTML);
    num = num + x;
    xp.innerHTML = num;
-   if (num >= 30) {
+   if (num >= 40) {
       solveBtn.disabled = false;
    } else {
       solveBtn.disabled = true;
