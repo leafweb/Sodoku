@@ -161,7 +161,6 @@ function History() {
    } else {
       level.innerHTML = levelHistory;
    }
-   XP(0)
    Focus();
 }
 function SetHistory() {
@@ -297,11 +296,6 @@ function XP(x){
    var num = Number(xp.innerHTML);
    num = num + x;
    xp.innerHTML = num;
-   if (num >= 40) {
-      solveBtn.disabled = false;
-   } else {
-      solveBtn.disabled = true;
-   }
    SetHistory();
 }
 // Timer 
@@ -358,7 +352,6 @@ function Solve() {
       Hide(active,'error');
    }
    SetHistory();
-   XP(-30);
    True();
 }
 // Solve All
