@@ -118,7 +118,7 @@ function History() {
    var heart = document.querySelector('#heart');
    var heartHistory = localStorage.getItem('heart');
    if (heartHistory == undefined) {
-      heart.innerHTML = '3';
+      heart.innerHTML = '5';
    } else {
       heart.innerHTML = heartHistory;
    }
@@ -329,7 +329,7 @@ function Timer() {
    }
    SetHistory();
 }
-// Win
+// Win 
 function Win(){
    var winnerTime = document.querySelector('#winner-time');
    var winnerXp = document.querySelector('#winner-xp');
