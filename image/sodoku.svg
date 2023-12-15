@@ -1,13 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
    <style>
-      path {
+  	g,path{
          filter: drop-shadow(50px 50px 50px #0005);
       }
    </style>
+   <rect fill="hsl(240,100%,40%)" transform="rotate(00 500 500)" width="1000" height="1000" rx="200" />
    <g transform="translate(100 100)scale(0.8)">
-      <rect fill="hsl(240,100%,80%)" transform="rotate(00 500 500)" x="150" y="150" width="700" height="700" rx="130" />
-      <rect fill="hsl(240,100%,80%)" transform="rotate(30 500 500)" x="150" y="150" width="700" height="700" rx="130" />
-      <rect fill="hsl(240,100%,80%)" transform="rotate(60 500 500)" x="150" y="150" width="700" height="700" rx="130" />
+      <rect fill="hsl(240,100%,90%)" transform="rotate(00 500 500)" x="150" y="150" width="700" height="700" rx="130" />
+      <rect fill="hsl(240,100%,90%)" transform="rotate(30 500 500)" x="150" y="150" width="700" height="700" rx="130" />
+      <rect fill="hsl(240,100%,90%)" transform="rotate(60 500 500)" x="150" y="150" width="700" height="700" rx="130" />
    </g>
    <path fill="hsl(240,100%,20%)" transform="translate(100 100)scale(0.8)rotate(45 500 500)" d="M575,325L575,225Q575,200,550,200L450,200Q425,200,425,225L425,325L575,325z M475,750C450,725,425,675,425,650L425,350L575,350L575,650C575,675,550,725,525,750Q500,850,475,750z" />
 </svg>
