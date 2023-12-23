@@ -324,6 +324,7 @@ function Timer() {
       _minutes++;
       minutesElm.innerHTML = "0" + _minutes;
       _seconds = 0;
+      secondsElm.innerHTML = "0" + _seconds;
    }
    if (_minutes > 9) {
       minutesElm.innerHTML = _minutes;
