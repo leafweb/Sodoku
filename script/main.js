@@ -17,7 +17,7 @@ var gameHeart = document.querySelector('.game-heart');
 var gameScore = document.querySelector('.game-score');
 var heart = document.querySelector('#heart');
 var time = document.querySelector('#time');
-var playerName= document.querySelector('#start-player-name');
+var playerName = document.querySelector('#start-player-name');
 var winnerName = document.querySelector('#winner-name');
 var winnerLevel = document.querySelector('#winner-level');
 var winnerTime = document.querySelector('#winner-time');
@@ -33,29 +33,29 @@ var seconds = 0;
 var minutes = 0;
 // version
 versionElm.innerHTML = version;
-// cordova
-document.addEventListener("backbutton", BackButton, false);
-// BackButton
-function BackButton() {
-   var activeAlert = document.querySelector('alert.show');
-   var activeGamePage = document.querySelector('page[name="p-game"].show');
-   var activeScoreboardPage = document.querySelector('page[name="p-GameLogTable"].show');
-   var activeSettingPage = document.querySelector('page[name="p-setting"].show');
-   var activeMenu = document.querySelector('menu.show');
-   if(activeGamePage || activeScoreboardPage || activeSettingPage){
-      BackToHome();
-   }
-   if(activeAlert){
-      CloseAlert(activeAlert.getAttribute('name'));
-   }
-   if(activeMenu){
-      Hide(menu);
-      Hide(backdropMenu);
-   }
-   if(!activeGamePage && !activeAlert && !activeMenu && !activeScoreboardPage && !activeSettingPage){
-      navigator.app.exitApp();
-   }
-}
+// // cordova
+// document.addEventListener("backbutton", BackButton, false);
+// // BackButton
+// function BackButton() {
+//    var activeAlert = document.querySelector('alert.show');
+//    var activeGamePage = document.querySelector('page[name="p-game"].show');
+//    var activeScoreboardPage = document.querySelector('page[name="p-GameLogTable"].show');
+//    var activeSettingPage = document.querySelector('page[name="p-setting"].show');
+//    var activeMenu = document.querySelector('menu.show');
+//    if (activeGamePage || activeScoreboardPage || activeSettingPage) {
+//       BackToHome();
+//    }
+//    if (activeAlert) {
+//       CloseAlert(activeAlert.getAttribute('name'));
+//    }
+//    if (activeMenu) {
+//       Hide(menu);
+//       Hide(backdropMenu);
+//    }
+//    if (!activeGamePage && !activeAlert && !activeMenu && !activeScoreboardPage && !activeSettingPage) {
+//       navigator.app.exitApp();
+//    }
+// }
 // Open Url
 function OpenUrl(x) {
    var a = document.createElement('a');
@@ -64,9 +64,9 @@ function OpenUrl(x) {
    a.click();
 }
 // Setting 
-function Setting(){
+function Setting() {
    var setting = JSON.parse(localStorage.getItem('sodoku-setting'));
-   if (setting == undefined){
+   if (setting == undefined) {
       setting = {
          'default-name': 'player 1',
          'border-radius': '10',
@@ -75,93 +75,93 @@ function Setting(){
          'easing': 'cubic-bezier(0.680,-0.550,0.265,1.550)',
          'animation': 'zoom-in',
       }
-      localStorage.setItem('sodoku-setting',JSON.stringify(setting));
+      localStorage.setItem('sodoku-setting', JSON.stringify(setting));
    }
    var root = document.querySelector(':root');
-   root.style.setProperty('--rad',setting['border-radius']+'px')
-   root.style.setProperty('--font-size',setting['font-size']+'px')
-   root.style.setProperty('--duration',setting['animation-duration']+'s')
-   root.style.setProperty('--easing',setting['easing'])
-   root.style.setProperty('--animation',setting['animation'])
+   root.style.setProperty('--rad', setting['border-radius'] + 'px')
+   root.style.setProperty('--font-size', setting['font-size'] + 'px')
+   root.style.setProperty('--duration', setting['animation-duration'] + 's')
+   root.style.setProperty('--easing', setting['easing'])
+   root.style.setProperty('--animation', setting['animation'])
    document.querySelector('#start-player-name').value = setting['default-name'];
    document.querySelector('#default-name-input').value = setting['default-name'];
-   document.querySelector('#border-radius-output').innerHTML = setting['border-radius']+'px';
+   document.querySelector('#border-radius-output').innerHTML = setting['border-radius'] + 'px';
    document.querySelector('#border-radius-input').value = setting['border-radius'];
-   document.querySelector('#font-size-output').innerHTML = setting['font-size']+'px';
+   document.querySelector('#font-size-output').innerHTML = setting['font-size'] + 'px';
    document.querySelector('#font-size-input').value = setting['font-size'];
-   document.querySelector('#animation-duration-output').innerHTML = setting['animation-duration']+'s';
+   document.querySelector('#animation-duration-output').innerHTML = setting['animation-duration'] + 's';
    document.querySelector('#animation-duration-input').value = setting['animation-duration'];
    document.querySelector('#easing-output').innerHTML = document.querySelector(`input[value="${setting['easing']}"]`).getAttribute('preview');
    document.querySelector('#animation-output').innerHTML = document.querySelector(`input[value="${setting['animation']}"]`).getAttribute('preview');
    var check1 = document.querySelector(`input[value="${setting['easing']}"]`);
    var check2 = document.querySelector(`input[value="${setting['animation']}"]`);
-   if(check1){
+   if (check1) {
       check1.checked = true;
    }
-   if(check2){
+   if (check2) {
       check2.checked = true;
    }
 }
-function SettingRad(x){
+function SettingRad(x) {
    var setting = JSON.parse(localStorage.getItem('sodoku-setting'));
    setting['border-radius'] = x;
-   localStorage.setItem('sodoku-setting',JSON.stringify(setting));
+   localStorage.setItem('sodoku-setting', JSON.stringify(setting));
    Setting();
 }
-function SettingFontSize(x){
+function SettingFontSize(x) {
    var setting = JSON.parse(localStorage.getItem('sodoku-setting'));
    setting['font-size'] = x;
-   localStorage.setItem('sodoku-setting',JSON.stringify(setting));
+   localStorage.setItem('sodoku-setting', JSON.stringify(setting));
    Setting();
 }
-function SettingDuration(x){
+function SettingDuration(x) {
    var setting = JSON.parse(localStorage.getItem('sodoku-setting'));
    setting['animation-duration'] = x;
-   localStorage.setItem('sodoku-setting',JSON.stringify(setting));
+   localStorage.setItem('sodoku-setting', JSON.stringify(setting));
    Setting();
 }
-function settingNikname(x){
+function settingNikname(x) {
    var setting = JSON.parse(localStorage.getItem('sodoku-setting'));
    setting['default-name'] = x;
-   localStorage.setItem('sodoku-setting',JSON.stringify(setting));
+   localStorage.setItem('sodoku-setting', JSON.stringify(setting));
    Setting();
 }
-function SettingEasing(x){
+function SettingEasing(x) {
    var setting = JSON.parse(localStorage.getItem('sodoku-setting'));
    setting['easing'] = x;
-   localStorage.setItem('sodoku-setting',JSON.stringify(setting));
+   localStorage.setItem('sodoku-setting', JSON.stringify(setting));
    Setting();
 }
-function SettingAnimation(x){
+function SettingAnimation(x) {
    var setting = JSON.parse(localStorage.getItem('sodoku-setting'));
    setting['animation'] = x;
-   localStorage.setItem('sodoku-setting',JSON.stringify(setting));
+   localStorage.setItem('sodoku-setting', JSON.stringify(setting));
    Setting();
 }
-function SettingReset(){
+function SettingReset() {
    localStorage.removeItem('sodoku-setting');
    ResetTheme();
    Setting();
 }
 Setting();
 // Show 
-function Show(x,y='show'){
+function Show(x, y = 'show') {
    if (!x.classList.contains(y)) {
       x.classList.add(y);
    }
 }
-function Hide(x,y='show'){
+function Hide(x, y = 'show') {
    if (x.classList.contains(y)) {
       x.classList.remove(y);
    }
 }
 // Alert 
-function Alert(x){
+function Alert(x) {
    var alr = document.querySelector(`alert[name="${x}"]`);
    Show(alr);
    Show(backdropAlert);
 }
-function CloseAlert(x){
+function CloseAlert(x) {
    var alr = document.querySelector(`alert[name="${x}"]`);
    Hide(backdropAlert);
    Hide(alr);
@@ -176,11 +176,11 @@ function Menu() {
    }
 }
 // Back To Home
-function BackToHome(){
+function BackToHome() {
    headerBtn.innerHTML = "brightness_4";
    headerTitle.innerHTML = "Sudoku";
-   headerBtn.setAttribute('onclick','Darkmode()')
-   Show(header,'float');
+   headerBtn.setAttribute('onclick', 'Darkmode()')
+   Show(header, 'float');
    Hide(footer);
    Show(pHome);
    Hide(pGameLog);
@@ -189,12 +189,12 @@ function BackToHome(){
    StopTimer();
    History();
 }
-function GoToGameLog(){
+function GoToGameLog() {
    var activePage = document.querySelector('page.show');
    headerBtn.innerHTML = "arrow_back";
    headerTitle.innerHTML = "Game Log";
-   headerBtn.setAttribute('onclick','BackToHome()');
-   Hide(header,'float');
+   headerBtn.setAttribute('onclick', 'BackToHome()');
+   Hide(header, 'float');
    Show(header);
    Hide(activePage);
    Hide(footer);
@@ -205,12 +205,12 @@ function GoToGameLog(){
    InsertGameLog();
    GamerData();
 }
-function GoToSetting(){
+function GoToSetting() {
    var activePage = document.querySelector('page.show');
    headerBtn.innerHTML = "arrow_back";
    headerTitle.innerHTML = "Settings";
-   headerBtn.setAttribute('onclick','BackToHome()');
-   Hide(header,'float');
+   headerBtn.setAttribute('onclick', 'BackToHome()');
+   Hide(header, 'float');
    Show(header);
    Hide(activePage);
    Hide(footer);
@@ -219,39 +219,39 @@ function GoToSetting(){
    Show(pSetting);
    StopTimer();
 }
-function Home(){
+function Home() {
    Hide(pSplashScreen);
-   Show(header,'float');
+   Show(header, 'float');
    Show(pHome);
 }
-setTimeout(Home,4000);
+setTimeout(Home, 4000);
 // History
 let SetHistory = {
-   table: ()=>{
+   table: () => {
       localStorage.setItem('sodoku-table', table.innerHTML);
    },
-   score: (x)=>{
+   score: (x) => {
       localStorage.setItem('sodoku-score', x);
    },
-   heart: (x)=>{
+   heart: (x) => {
       localStorage.setItem('sodoku-heart', x);
    },
-   time: (x)=>{
+   time: (x) => {
       localStorage.setItem('sodoku-time', x);
    },
-   name: (x)=>{
+   name: (x) => {
       localStorage.setItem('sodoku-winner-name', x);
    },
-   leve: (x)=>{
+   leve: (x) => {
       localStorage.setItem('sodoku-winner-level', x);
    },
 }
-function ClearHistory(x){
-   if (localStorage.getItem(x) !== undefined){
+function ClearHistory(x) {
+   if (localStorage.getItem(x) !== undefined) {
       localStorage.removeItem(x);
    }
 }
-function ClearGameHistory(){
+function ClearGameHistory() {
    ClearHistory('sodoku-table');
    ClearHistory('sodoku-score');
    ClearHistory('sodoku-heart');
@@ -259,13 +259,13 @@ function ClearGameHistory(){
    ClearHistory('sodoku-winner-name');
    ClearHistory('sodoku-winner-level');
 }
-function History(){
+function History() {
    // sodoku-table
    var tableHistory = localStorage.getItem('sodoku-table');
    if (tableHistory == undefined) {
-      Show(continueBtn,'hide');
+      Show(continueBtn, 'hide');
    } else {
-      Hide(continueBtn,'hide');
+      Hide(continueBtn, 'hide');
       table.innerHTML = tableHistory;
    }
    // sodoku-score
@@ -289,47 +289,47 @@ function History(){
       minutes = 0;
       time.innerHTML = '00:00';
    } else {
-      seconds = Number(timeHistory.slice(2,4));
-      minutes = Number(timeHistory.slice(0,2));
-      time.innerText = minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0');
+      seconds = Number(timeHistory.slice(2, 4));
+      minutes = Number(timeHistory.slice(0, 2));
+      time.innerText = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
    }
 }
-function ClearAllHistory(){
+function ClearAllHistory() {
    localStorage.clear();
    SettingReset();
    History();
-   
+
 }
 History();
 // Create Table
-function CreateTable(){
+function CreateTable() {
    var table = document.querySelector("#table");
    var indexTable = [
-      [ 0, 1, 2, 9,10,11,18,19,20],
-      [ 3, 4, 5,12,13,14,21,22,23],
-      [ 6, 7, 8,15,16,17,24,25,26],
-      [27,28,29,36,37,38,45,46,47],
-      [30,31,32,39,40,41,48,49,50],
-      [33,34,35,42,43,44,51,52,53],
-      [54,55,56,63,64,65,72,73,74],
-      [57,58,59,66,67,68,75,76,77],
-      [60,61,62,69,70,71,78,79,80]
+      [0, 1, 2, 9, 10, 11, 18, 19, 20],
+      [3, 4, 5, 12, 13, 14, 21, 22, 23],
+      [6, 7, 8, 15, 16, 17, 24, 25, 26],
+      [27, 28, 29, 36, 37, 38, 45, 46, 47],
+      [30, 31, 32, 39, 40, 41, 48, 49, 50],
+      [33, 34, 35, 42, 43, 44, 51, 52, 53],
+      [54, 55, 56, 63, 64, 65, 72, 73, 74],
+      [57, 58, 59, 66, 67, 68, 75, 76, 77],
+      [60, 61, 62, 69, 70, 71, 78, 79, 80]
    ];
    table.innerHTML = "";
-   for (i in indexTable){
+   for (i in indexTable) {
       var div1 = document.createElement("div");
-      div1.style.setProperty("--delay",(i*0.2).toFixed(2)+"s");
+      div1.style.setProperty("--delay", (i * 0.2).toFixed(2) + "s");
       table.appendChild(div1);
-     for (j in indexTable[i]){
+      for (j in indexTable[i]) {
          var div2 = document.createElement("div");
-         div2.setAttribute("index",indexTable[i][j]);
+         div2.setAttribute("index", indexTable[i][j]);
          div2.classList.add("cell")
          div1.appendChild(div2);
       }
    }
    var cell = document.querySelectorAll(".cell");
-   for(var i = 0; i < cell.length; i++){
-      cell[i].style.setProperty("--delay",(i*0.03).toFixed(2)+"s");
+   for (var i = 0; i < cell.length; i++) {
+      cell[i].style.setProperty("--delay", (i * 0.03).toFixed(2) + "s");
    }
 }
 //Generate
@@ -339,14 +339,14 @@ function Generate(y) {
    cell.forEach(x => {
       if ($sudoku[Number(x.getAttribute('index'))] !== '.') {
          x.innerHTML = $sudoku[Number(x.getAttribute('index'))];
-         x.setAttribute('num',$sudoku[Number(x.getAttribute('index'))])
+         x.setAttribute('num', $sudoku[Number(x.getAttribute('index'))])
          x.classList.add('num');
       }
    });
    SetHistory.table();
 }
 // NewGame 
-function NewGame(){
+function NewGame() {
    var table = localStorage.getItem('sodoku-table');
    if (table == undefined) {
       Alert('a-start');
@@ -355,13 +355,13 @@ function NewGame(){
    }
 }
 // Start 
-function Start(){
+function Start() {
    var difficulty = document.querySelector('input[name="game-level"]:checked').value;
    headerBtn.innerHTML = "arrow_back";
-   headerBtn.setAttribute('onclick','BackToHome()');
+   headerBtn.setAttribute('onclick', 'BackToHome()');
    CloseAlert('a-start');
    Show(header);
-   Hide(header,'float');
+   Hide(header, 'float');
    Show(footer);
    Hide(pHome);
    Show(pGame);
@@ -376,11 +376,11 @@ function Start(){
    Focus();
 }
 // Continue
-function Continue(){
+function Continue() {
    headerBtn.innerHTML = "arrow_back";
-   headerBtn.setAttribute('onclick','BackToHome()');
+   headerBtn.setAttribute('onclick', 'BackToHome()');
    Show(header);
-   Hide(header,'float');
+   Hide(header, 'float');
    Show(footer);
    Hide(pHome);
    Show(pGame);
@@ -389,7 +389,7 @@ function Continue(){
    Focus();
 }
 // Focus
-function Focus(){
+function Focus() {
    var cell = document.querySelectorAll('.cell');
    cell.forEach(x => {
       x.onclick = () => {
@@ -398,15 +398,15 @@ function Focus(){
                Hide(cell[i], 'focus')
                Hide(cell[i], 'like');
                if (x.innerHTML == cell[i].innerHTML) {
-                  Show(cell[i],'like')
+                  Show(cell[i], 'like')
                }
             }
          } else {
             for (var i = 0; i < cell.length; i++) {
-               Hide(cell[i],'focus')
-               Hide(cell[i],'like');
+               Hide(cell[i], 'focus')
+               Hide(cell[i], 'like');
             }
-            Show(x,'focus')
+            Show(x, 'focus')
          }
          SetHistory.table();
       }
@@ -417,41 +417,41 @@ function Focus(){
             Hide(cell[i], 'focus')
             Hide(cell[i], 'like');
             if (x.innerHTML == cell[i].innerHTML) {
-               Show(cell[i],'like')
+               Show(cell[i], 'like')
             }
          }
       }
    })
 }
 // Time
-function StartTimer(){
+function StartTimer() {
    clearInterval(timer);
    timer = setInterval(Timer, 1000);
 }
-function StopTimer(){
+function StopTimer() {
    clearInterval(timer);
 }
-function Timer(){
-   if(seconds >= 59){
+function Timer() {
+   if (seconds >= 59) {
       seconds = seconds = 0;
       minutes = minutes + 1;
-   }else{
+   } else {
       seconds = seconds + 1;
    }
-   time.innerHTML = minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0');
-   SetHistory.time(minutes.toString().padStart(2,'0') + '' + seconds.toString().padStart(2,'0'));
+   time.innerHTML = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+   SetHistory.time(minutes.toString().padStart(2, '0') + '' + seconds.toString().padStart(2, '0'));
 }
 function ParseTime(time) {
    var arr = time.split(':');
    var s;
-   if (arr.length == 3){
-      var s = (Number(time.split(':')[0])*3600)+(Number(time.split(':')[1])*60)+Number(time.split(':')[2]);
+   if (arr.length == 3) {
+      var s = (Number(time.split(':')[0]) * 3600) + (Number(time.split(':')[1]) * 60) + Number(time.split(':')[2]);
    } else {
-      var s = (Number(time.split(':')[0])*60)+Number(time.split(':')[1]);
+      var s = (Number(time.split(':')[0]) * 60) + Number(time.split(':')[1]);
    }
    return s
 }
-function FormatTime(s){
+function FormatTime(s) {
    var hours = Math.floor(s / 3600);
    var minutes = Math.floor((s % 3600) / 60);
    var seconds = s % 60;
@@ -461,7 +461,7 @@ function FormatTime(s){
    return `${hours}:${minutes}:${seconds}`;
 }
 // Test
-function Test(){
+function Test() {
    var btn = event.currentTarget;
    var num = Number(btn.innerText);
    var active = document.querySelector('.cell.focus:not(.num)');
@@ -469,13 +469,13 @@ function Test(){
       var index = Number(active.getAttribute('index'));
       active.innerHTML = num;
       if (Solvable(index)) {
-         Show(active,'solve')
-         Show(active,'num')
-         Hide(active,'error');
-         active.setAttribute('num',num);
+         Show(active, 'solve')
+         Show(active, 'num')
+         Hide(active, 'error');
+         active.setAttribute('num', num);
          True();
       } else {
-         Show(active,'error');
+         Show(active, 'error');
          False();
       }
    }
@@ -486,15 +486,15 @@ function Test(){
 function Solvable() {
    var cell = document.querySelectorAll('#table .cell');
    var indexTable = [
-      [0, 1, 2, 9,10,11,18,19,20],
-      [3, 4, 5,12,13,14,21,22,23],
-      [6, 7, 8,15,16,17,24,25,26],
-      [27,28,29,36,37,38,45,46,47],
-      [30,31,32,39,40,41,48,49,50],
-      [33,34,35,42,43,44,51,52,53],
-      [54,55,56,63,64,65,72,73,74],
-      [57,58,59,66,67,68,75,76,77],
-      [60,61,62,69,70,71,78,79,80]
+      [0, 1, 2, 9, 10, 11, 18, 19, 20],
+      [3, 4, 5, 12, 13, 14, 21, 22, 23],
+      [6, 7, 8, 15, 16, 17, 24, 25, 26],
+      [27, 28, 29, 36, 37, 38, 45, 46, 47],
+      [30, 31, 32, 39, 40, 41, 48, 49, 50],
+      [33, 34, 35, 42, 43, 44, 51, 52, 53],
+      [54, 55, 56, 63, 64, 65, 72, 73, 74],
+      [57, 58, 59, 66, 67, 68, 75, 76, 77],
+      [60, 61, 62, 69, 70, 71, 78, 79, 80]
    ];
    var s = '';
    for (var i = 0; i < 9; i++) {
@@ -515,98 +515,95 @@ function Solvable() {
    }
 }
 // Eraser
-function Eraser(){
+function Eraser() {
    var active = document.querySelector('.cell.focus:not(.num)');
    if (active) {
       active.innerHTML = '';
-      Hide(active,'error');
+      Hide(active, 'error');
    }
    SetHistory.table();
 }
 // True
-function True(){
+function True() {
    gameScore.animate(
-      {
-         'color': ['currentColor','var(--primary)','var(--primary)','currentColor'],
-         'transform': ['scale(1)','scale(1.3)','scale(1.3)','scale(1)']
-      },
-      {
-         fill: "both",
-         duration: 500
-      }
-   ).play();
+   {
+      'color': ['currentColor', 'var(--primary)', 'var(--primary)', 'currentColor'],
+      'transform': ['scale(1)', 'scale(1.3)', 'scale(1.3)', 'scale(1)']
+   },
+   {
+      fill: "both",
+      duration: 500
+   }).play();
    if (document.querySelectorAll('.num').length === 81) {
-      setTimeout(Win,300);
+      setTimeout(Win, 300);
    }
    Score(10);
 }
 // False
-function False(){
+function False() {
    gameHeart.animate(
-      {
-         'color': ['currentColor','var(--error)','var(--error)','currentColor'],
-         'transform': ['scale(1)','scale(1.3)','scale(1.3)','scale(1)']
-      },
-      {
-         fill: "both",
-         duration: 500
-      }
-   ).play();
+   {
+      'color': ['currentColor', 'var(--error)', 'var(--error)', 'currentColor'],
+      'transform': ['scale(1)', 'scale(1.3)', 'scale(1.3)', 'scale(1)']
+   },
+   {
+      fill: "both",
+      duration: 500
+   }).play();
    gameScore.animate(
-      {
-         'color': ['currentColor','var(--error)','var(--error)','currentColor'],
-         'transform': ['scale(1)','scale(1.3)','scale(1.3)','scale(1)']
-      },
-      {
-         fill: "both",
-         duration: 500
-      }
-   ).play();
-   Show(table,'error');
-   setTimeout(()=>Hide(table,'error'),400);
+   {
+      'color': ['currentColor', 'var(--error)', 'var(--error)', 'currentColor'],
+      'transform': ['scale(1)', 'scale(1.3)', 'scale(1.3)', 'scale(1)']
+   },
+   {
+      fill: "both",
+      duration: 500
+   }).play();
+   Show(table, 'error');
+   setTimeout(() => Hide(table, 'error'), 400);
    Heart(-1);
    Score(-5);
 }
 // progress
 function Progress() {
-   var num = [1,2,3,4,5,6,7,8,9];
+   var num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
    for (i of num) {
       var cell = document.querySelectorAll(`.cell[num="${i}"]`);
       var progress = document.querySelector(`.progress[num="${i}"]`);
       var btn = document.querySelector(`footer>button[num="${i}"]`)
-      progress.innerHTML = num[i-1];
+      progress.innerHTML = num[i - 1];
       if (cell.length >= 9) {
          Hide(btn);
-         Show(progress,'on');
+         Show(progress, 'on');
       } else {
          Show(btn);
-         Hide(progress,'on');
+         Hide(progress, 'on');
       }
    }
 }
 // Score 
-function Score(x){
+function Score(x) {
    var num = Number(score.innerHTML);
    num = num + x;
    score.innerHTML = num;
    SetHistory.score(num)
 }
 // Heart
-function Heart(x){
+function Heart(x) {
    var num = Number(heart.innerHTML);
    if (num > 0) {
       num = num + x;
       heart.innerHTML = num;
    }
-   if (num == 0){
-      setTimeout(Lost,300);
+   if (num == 0) {
+      setTimeout(Lost, 300);
    }
    SetHistory.heart(num);
 }
 // Win
-function Win(){
+function Win() {
    StopTimer();
-   var [wn,wl,wt,ws] = [
+   var [wn, wl, wt, ws] = [
       localStorage.getItem('sodoku-winner-name'),
       localStorage.getItem('sodoku-winner-level'),
       time.innerHTML,
@@ -615,40 +612,40 @@ function Win(){
    var s = (Number(wt.split(':')[0]) * 60) + Number(wt.split(':')[1]);
    var gift1;
    var gift2;
-   if (s > 600){gift1 = 5}
-   if (s <= 600){gift1 = 10}
-   if (s <= 300){gift1 = 20}
-   if (s <= 120){gift1 = 40}
-   if (s <= 60){gift1 = 60}
-   if (s <= 30){gift1 = 120}
-   if (wl == "easy"){gift2 = 50}
-   if (wl == "medium"){gift2 = 100}
-   if (wl == "hard"){gift2 = 200}
+   if (s > 600) { gift1 = 5 }
+   if (s <= 600) { gift1 = 10 }
+   if (s <= 300) { gift1 = 20 }
+   if (s <= 120) { gift1 = 40 }
+   if (s <= 60) { gift1 = 60 }
+   if (s <= 30) { gift1 = 120 }
+   if (wl == "easy") { gift2 = 50 }
+   if (wl == "medium") { gift2 = 100 }
+   if (wl == "hard") { gift2 = 200 }
    winnerName.innerHTML = wn;
    winnerLevel.innerHTML = wl;
    winnerTime.innerHTML = wt;
    winnerScore.innerHTML = ws + " + " + gift1 + " + " + gift2;
-   if (wn !== undefined){
-      GameLog(wn,wl,wt,(Number(ws)+Number(gift1)+Number(gift2)),"Win");
+   if (wn !== undefined) {
+      GameLog(wn, wl, wt, (Number(ws) + Number(gift1) + Number(gift2)), "Win");
    }
    Alert('a-win');
    ClearGameHistory();
 }
 // Lost
-function Lost(){
+function Lost() {
    StopTimer();
-   var [ln,ll,lt,ls] = [
+   var [ln, ll, lt, ls] = [
       localStorage.getItem('sodoku-winner-name'),
       localStorage.getItem('sodoku-winner-level'),
       time.innerHTML,
       localStorage.getItem('sodoku-score')
    ];
    var penalty;
-   if (ll == "easy"){penalty = -50}
-   if (ll == "medium"){penalty = -100}
-   if (ll == "hard"){penalty = -200}
-   if (ln !== null){
-      GameLog(ln,ll,lt,penalty,"Lost");
+   if (ll == "easy") { penalty = -50 }
+   if (ll == "medium") { penalty = -100 }
+   if (ll == "hard") { penalty = -200 }
+   if (ln !== null) {
+      GameLog(ln, ll, lt, penalty, "Lost");
    }
    Alert('a-lost')
    ClearGameHistory();
@@ -658,15 +655,15 @@ function Lost(){
 function Solve() {
    var cell = document.querySelectorAll('#table .cell');
    var indexTable = [
-      [0, 1, 2, 9,10,11,18,19,20],
-      [3, 4, 5,12,13,14,21,22,23],
-      [6, 7, 8,15,16,17,24,25,26],
-      [27,28,29,36,37,38,45,46,47],
-      [30,31,32,39,40,41,48,49,50],
-      [33,34,35,42,43,44,51,52,53],
-      [54,55,56,63,64,65,72,73,74],
-      [57,58,59,66,67,68,75,76,77],
-      [60,61,62,69,70,71,78,79,80]
+      [0, 1, 2, 9, 10, 11, 18, 19, 20],
+      [3, 4, 5, 12, 13, 14, 21, 22, 23],
+      [6, 7, 8, 15, 16, 17, 24, 25, 26],
+      [27, 28, 29, 36, 37, 38, 45, 46, 47],
+      [30, 31, 32, 39, 40, 41, 48, 49, 50],
+      [33, 34, 35, 42, 43, 44, 51, 52, 53],
+      [54, 55, 56, 63, 64, 65, 72, 73, 74],
+      [57, 58, 59, 66, 67, 68, 75, 76, 77],
+      [60, 61, 62, 69, 70, 71, 78, 79, 80]
    ];
    var s = '';
    for (var i = 0; i < 9; i++) {
@@ -686,8 +683,8 @@ function Solve() {
       var index = Number(active.getAttribute('index'));
       active.innerHTML = solve[index];
       active.classList.add('solve', 'num');
-      active.setAttribute('num',solve[index])
-      Hide(active,'error');
+      active.setAttribute('num', solve[index])
+      Hide(active, 'error');
       True();
       Progress();
       SetHistory.table();
@@ -698,15 +695,15 @@ function Solve() {
 function SolveAll() {
    var cell = document.querySelectorAll('#table .cell');
    var indexTable = [
-      [0, 1, 2, 9,10,11,18,19,20],
-      [3, 4, 5,12,13,14,21,22,23],
-      [6, 7, 8,15,16,17,24,25,26],
-      [27,28,29,36,37,38,45,46,47],
-      [30,31,32,39,40,41,48,49,50],
-      [33,34,35,42,43,44,51,52,53],
-      [54,55,56,63,64,65,72,73,74],
-      [57,58,59,66,67,68,75,76,77],
-      [60,61,62,69,70,71,78,79,80]
+      [0, 1, 2, 9, 10, 11, 18, 19, 20],
+      [3, 4, 5, 12, 13, 14, 21, 22, 23],
+      [6, 7, 8, 15, 16, 17, 24, 25, 26],
+      [27, 28, 29, 36, 37, 38, 45, 46, 47],
+      [30, 31, 32, 39, 40, 41, 48, 49, 50],
+      [33, 34, 35, 42, 43, 44, 51, 52, 53],
+      [54, 55, 56, 63, 64, 65, 72, 73, 74],
+      [57, 58, 59, 66, 67, 68, 75, 76, 77],
+      [60, 61, 62, 69, 70, 71, 78, 79, 80]
    ];
    var s = '';
    for (var i = 0; i < 9; i++) {
@@ -726,57 +723,57 @@ function SolveAll() {
       var index = Number(active[i].getAttribute('index'));
       active[i].innerHTML = solve[index];
       active[i].classList.add('solve', 'num');
-      Hide(active[i],'error');
+      Hide(active[i], 'error');
       True();
    }
 }
 // Get Date
-function GetDate(){
+function GetDate() {
    var today = new Date();
    var options = { day: '2-digit', month: 'short' };
    var formattedDate = today.toLocaleDateString('en-US', options);
    return formattedDate;
 }
 // Win log
-function GameLog(gn,gl,gt,gs,gr){
+function GameLog(gn, gl, gt, gs, gr) {
    var data = JSON.parse(localStorage.getItem('sodoku-winners'));
-   if (data == undefined){
+   if (data == undefined) {
       var data = [];
-      localStorage.setItem('sodoku-winners',JSON.stringify(data));
+      localStorage.setItem('sodoku-winners', JSON.stringify(data));
    }
    if (data.length >= 100) {
       data.pop();
    }
-   data.unshift([gn,gl,gt,gs,gr,GetDate()]);
-   localStorage.setItem('sodoku-winners',JSON.stringify(data));
+   data.unshift([gn, gl, gt, gs, gr, GetDate()]);
+   localStorage.setItem('sodoku-winners', JSON.stringify(data));
 }
-function InsertGameLog(){
+function InsertGameLog() {
    var data = JSON.parse(localStorage.getItem('sodoku-winners'));
-   if (data == undefined){
+   if (data == undefined) {
       var data = [];
-      localStorage.setItem('sodoku-winners',JSON.stringify(data));
+      localStorage.setItem('sodoku-winners', JSON.stringify(data));
    }
    gameLogTable.innerHTML = '<tr><th>Name</th><th>Level</th><th>Time</th><th>score</th><th>Status</th><th>Date</th></tr>';
-   if (data.length == 0){
+   if (data.length == 0) {
       gameLogTable.innerHTML += '<tr><td> - </td><td> - </td><td> - </td><td> - </td><td> - </td><td> - </td></tr>';
    }
-   for (i of data){
+   for (i of data) {
       var tr = document.createElement('tr');
       gameLogTable.appendChild(tr);
-      for(j of i){
+      for (j of i) {
          var td = document.createElement('td');
          td.innerHTML = j;
          tr.appendChild(td);
       }
    }
 }
-function ClearGameLog(){
+function ClearGameLog() {
    ClearHistory('sodoku-winners');
    InsertGameLog();
    GamerData();
 }
 // Gamer data
-function GamerData(){
+function GamerData() {
    var data = JSON.parse(localStorage.getItem('sodoku-winners'));
    var result = data.reduce((acc, item) => {
       var playerName = item[0];
@@ -800,7 +797,7 @@ function GamerData(){
       return acc;
    }, {});
    gamerDataTable.innerHTML = "";
-   for(i in result){
+   for (i in result) {
       var tr = document.createElement('div');
       var th = document.createElement('div');
       var tr2 = document.createElement('div');
@@ -815,7 +812,7 @@ function GamerData(){
       tr2.innerHTML += `<div> Win Count: ${result[i].winCount} </div>`;
       tr2.innerHTML += `<div> Lost Count: ${result[i].lostCount} </div>`;
    }
-   if (data.length == 0){
-      gamerDataTable.innerHTML =  '<div><div> - </div><div><div> Total Game: - </div><div> Win Percentage: - </div><div> Total Time: - </div><div> Total Score: - </div><div> Win Count: - </div><div> Lost Count: - </div>';
+   if (data.length == 0) {
+      gamerDataTable.innerHTML = '<div><div> - </div><div><div> Total Game: - </div><div> Win Percentage: - </div><div> Total Time: - </div><div> Total Score: - </div><div> Win Count: - </div><div> Lost Count: - </div>';
    }
 }
