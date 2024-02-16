@@ -96,11 +96,11 @@ header{
    transform: translateY(-100%);
    transition: @duration @easing;
    &.show{
-      transform: translateY(0%)!important;
+      transform: translateY(0%);
    }
    &.float{
-      padding: 10px;
       transform: translateY(0%);
+      padding: 10px;
       &>div{
          border-radius: calc(@rad + 5px);
       }
@@ -158,6 +158,85 @@ header{
          &>ripple{
             background-attachment: var(--primary);
          }
+      }
+   }
+}
+navbar{
+   display: none;
+   direction: ltr;
+   padding: 0;
+   position: fixed;
+   top: 0;
+   left: 0;
+   height: 100%;
+   z-index: 1;
+   transform: translateX(-100%);
+   transition: @duration @easing;
+   &.show{
+      transform: translateX(0%);
+   }
+   &.float{
+      transform: translateX(0%);
+      padding: 10px;
+      &>div{
+         border-radius: calc(@rad + 5px);
+      }
+   }
+   &>div{
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-between;
+      align-items: stretch;
+      width: 60px;
+      height: 100%;
+      background: var(--surface-variant);
+      color: var(--on-surface-variant);
+      transition: @duration;
+      overflow: hidden auto;
+      padding: 5px;
+      &>div{
+         display: flex;
+         flex-flow: column nowrap;
+         justify-content: start;
+         align-items: center;
+         gap: 5px;
+         &>div{
+            aspect-ratio: 1/1;
+            width: 100%;
+            display: flex!important;
+            justify-content: center;
+            align-items: center;
+            border-radius: @rad;
+            font-size: calc(@font-size + 16px)!important;
+            font-variation-settings:
+               'FILL' 0,
+               'wght' 300,
+               'GRAD' 0,
+               'opsz' 48;
+            transition: @duration!important;
+            &:hover{
+               font-variation-settings:
+                  'FILL' 0,
+                  'wght' 600,
+                  'GRAD' 0,
+                  'opsz' 48;
+            }
+            &.on{
+               background: var(--primary);
+               color: var(--on-primary);
+               font-variation-settings:
+                  'FILL' 1,
+                  'wght' 300,
+                  'GRAD' 0,
+                  'opsz' 48;
+            }
+            &>ripple{
+               background-attachment: var(--primary);
+            }
+         }
+      }
+      &>div:nth-child(1){
+         flex-grow: 1;
       }
    }
 }
@@ -317,20 +396,24 @@ page[name="p-splash-screen"].show{
 }
 /* p-home */
 page[name="p-home"]{
+   position: relative;
    background-image: radial-gradient(var(--surface) 0%,var(--surface) 15%,transparent 15%),
    repeating-linear-gradient(var(--background) 0%,var(--background) 5%,transparent 5%,transparent 10%),linear-gradient(45deg,transparent 49%, var(--surface) 49%,var(--surface) 51%,transparent 51%),linear-gradient(-45deg,transparent 49%, var(--surface) 49%,var(--surface) 51%,transparent 51%);
    background-size: 3em 3em;
    background-color: var(--background);
+   padding: 10px;
    padding-top: 80px;
+   flex-flow: column nowrap;
+   justify-content: center;
+   gap: 20px;
+   @media screen and (max-height: 500px){
+      justify-content: start;
+   }
    &.show{
       display: flex;
    }
-   flex-flow: column wrap;
-   justify-content: space-between;
-   align-items: center;
    &>*{
       width: 100%;
-      flex-grow: 1;
    }
 }
 .home-logo{
@@ -338,7 +421,7 @@ page[name="p-home"]{
    flex-flow: row wrap;
    justify-content: center;
    align-items: center;
-   gap: 20px;
+   gap: 10px;
    padding: 20px;
    font-size: calc(@font-size + 16px);
    font-weight: 500;
@@ -348,7 +431,7 @@ page[name="p-home"]{
    transition: @duration;
    svg{
       width: 90%;
-      max-width: 500px;
+      max-width: 300px;
       rect,path{
          transition: @duration;
       }
@@ -363,21 +446,15 @@ page[name="p-home"]{
       }
    }
 }
-.home-flex{
-   display: flex;
-   flex-flow: column nowrap;
-   justify-content: space-between;
-   align-items: stretch;
-   padding: 10px;
-   p{
-      margin: 0;
-   }
+.home-footer{
+   text-align: center;
 }
 /* p-game */
 page[name="p-game"]{
    background: radial-gradient(circle at 25% 25%,transparent 15%,var(--surface) 15%, var(--surface) 20%, transparent 20%, transparent 100%), radial-gradient(circle at 75% 75%, transparent 12%, var(--surface) 12%, var(--surface) 18%, transparent 18%);
    background-color: var(--background);
    background-size: 3em 3em;
+   padding-bottom: 100px;
    &.show{
       #table{
          &>div{
@@ -459,12 +536,12 @@ page[name="p-game"]{
       font-weight: 1000;
    }
    .cell.like{
-      background: var(--primary-container);
+      background: var(--primary-container);      
       font-weight: 1000;
    }
    .cell.error{
-      background: var(--error-container);
-      color: var(--on-error-container);
+      background: var(--error);
+      color: var(--on-error);
       &.focus{
          background: var(--glass);
          color: var(--error);
@@ -481,6 +558,7 @@ page[name="p-game"]{
    }
    &.error{
       background: var(--error-container);
+      box-shadow: 0 0 20px -5px var(--error-container);
       animation: shake @duration both;
    }
 }
@@ -509,7 +587,7 @@ page[name="p-game"]{
    }
 }
 /* p-setting */
-page[name="p-setting"]{
+page[name="p-settings"]{
    background: linear-gradient(25deg, var(--background) 40%, transparent 41%, transparent 59%, var(--background) 60%)  ,linear-gradient(90deg, transparent 45%, var(--surface) 45%, var(--surface) 55%, transparent 55%, transparent 20%, var(--surface) 20%, var(--surface) 30%,transparent 30%) ,linear-gradient(90deg, var(--surface) 9%, transparent 10%);
    background-size: 4em 4em;
    background-color: var(--background);
@@ -1038,9 +1116,46 @@ table td:last-child{
    border-radius: 0 @rad @rad 0;
 }
 /* responseve */
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 700px) {
+   header{display: none!important}
+   navbar{display: block!important}
    menu {
       width: 400px;
+   }
+   page{
+      padding-top: 0;
+      padding-left: 60px;
+      &[name="p-home"]{
+         padding-top: 0;
+         padding-left: 80px;
+         .flex{
+            justify-content: center;
+            &>*{
+               max-width: 300px;
+            }
+         }
+      }
+      &[name="p-game-log"]{
+         padding-top: 0;
+         padding: 5px 5px 5px 70px;
+      }
+   }
+   footer{
+      left: 80px;
+      width: calc(100% - 100px);
+      border-radius: @rad;
+      flex-flow: row wrap;
+      height: unset;
+      justify-content: space-between;
+      &.show{
+         bottom: 20px;
+      }
+      &>button{
+         &.eraser{
+            order: 10;
+            flex-grow: 3;
+         }
+      }
    }
 }
 /* animation */

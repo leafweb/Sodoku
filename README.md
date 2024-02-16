@@ -1,2 +1,2 @@
-![cover](image/icon(1000).png)
+![cover](image/icons/ic_launcher.svg)
 # Sodoku
