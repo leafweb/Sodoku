@@ -151,6 +151,7 @@ function Hide(x,y='show'){
       x.classList.remove(y);
    }
 }
+// Page
 function Page(x){
    var targetPage = document.querySelector(`page[name="p-${x}"]`);
    var targetBtn = document.querySelector(`[name="pb-${x}"]`);
@@ -160,6 +161,7 @@ function Page(x){
    if (activeBtn) {Hide(activeBtn,"on")}
    Show(targetPage)
    if (targetBtn) {Show(targetBtn,"on")}
+   Statusbar();
 }
 // Alert 
 function Alert(x){
@@ -251,7 +253,7 @@ function Home(){
    Show(navbar,'float');
    Page("home")
 }
-setTimeout(Home,0);
+setTimeout(Home,4000);
 // History
 let SetHistory = {
    table: ()=>{

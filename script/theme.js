@@ -1,4 +1,4 @@
-// theme
+// Theme
 var color = localStorage.getItem('sodoku-color');
 if (color == undefined) { 
    color = 'blue';
@@ -20,9 +20,14 @@ M.setDarkmode(mode);
 M.setColor(color);
 document.querySelector('#darkmode-output').checked = mode;
 document.querySelector('#theme-color-output').innerHTML = check.getAttribute('preview');
+document.addEventListener("deviceready", onDeviceReady, false);
 function Statusbar(){
    var TC = document.querySelector('meta[name="theme-color"]');
-   TC.setAttribute('content',M.themeColor.surface.slice(0,7));
+   if(document.querySelector('[name="p-home"]').classList.contains('show') || document.querySelector('[name="p-splash-screen"]').classList.contains('show')){
+      TC.setAttribute('content',M.themeColor['background'].slice(0,7));
+   } else {
+      TC.setAttribute('content',M.themeColor['surface-variant'].slice(0,7));
+   }
 }
 function Freeze(){
    var all = document.querySelectorAll('*,*:after,*:before');
@@ -35,7 +40,6 @@ function Freeze(){
       });
    },100);
 }
-Statusbar()
 function Darkmode() {
    Freeze();
    M.toggleMode();
@@ -65,4 +69,5 @@ function ResetTheme(){
    M.setColor(color);
    document.querySelector('#darkmode-output').checked = mode;
    document.querySelector('#theme-color-output').innerHTML = check.getAttribute('preview');
+   Statusbar()
 }
