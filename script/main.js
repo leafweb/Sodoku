@@ -30,28 +30,28 @@ var minutes = 0;
 // version
 versionElm.innerHTML = version;
 // cordova
-document.addEventListener("backbutton", BackButton, false);
+// document.addEventListener("backbutton", BackButton, false);
 // BackButton
-function BackButton() {
-   var activeAlert = document.querySelector('alert.show');
-   var activeGamePage = document.querySelector('page[name="p-game"].show');
-   var activeScoreboardPage = document.querySelector('page[name="p-GameLogTable"].show');
-   var activeSettingPage = document.querySelector('page[name="p-setting"].show');
-   var activeMenu = document.querySelector('menu.show');
-   if(activeGamePage || activeScoreboardPage || activeSettingPage){
-      BackToHome();
-   }
-   if(activeAlert){
-      CloseAlert(activeAlert.getAttribute('name'));
-   }
-   if(activeMenu){
-      Hide(menu);
-      Hide(backdropMenu);
-   }
-   if(!activeGamePage && !activeAlert && !activeMenu && !activeScoreboardPage && !activeSettingPage){
-      navigator.app.exitApp();
-   }
-}
+// function BackButton() {
+//    var activeAlert = document.querySelector('alert.show');
+//    var activeGamePage = document.querySelector('page[name="p-game"].show');
+//    var activeScoreboardPage = document.querySelector('page[name="p-GameLogTable"].show');
+//    var activeSettingPage = document.querySelector('page[name="p-setting"].show');
+//    var activeMenu = document.querySelector('menu.show');
+//    if(activeGamePage || activeScoreboardPage || activeSettingPage){
+//       BackToHome();
+//    }
+//    if(activeAlert){
+//       CloseAlert(activeAlert.getAttribute('name'));
+//    }
+//    if(activeMenu){
+//       Hide(menu);
+//       Hide(backdropMenu);
+//    }
+//    if(!activeGamePage && !activeAlert && !activeMenu && !activeScoreboardPage && !activeSettingPage){
+//       navigator.app.exitApp();
+//    }
+// }
 // Open Url
 function OpenUrl(x) {
    var a = document.createElement('a');
