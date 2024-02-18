@@ -20,7 +20,6 @@ M.setDarkmode(mode);
 M.setColor(color);
 document.querySelector('#darkmode-output').checked = mode;
 document.querySelector('#theme-color-output').innerHTML = check.getAttribute('preview');
-document.addEventListener("deviceready", onDeviceReady, false);
 function Statusbar(){
    var TC = document.querySelector('meta[name="theme-color"]');
    if(document.querySelector('[name="p-home"]').classList.contains('show') || document.querySelector('[name="p-splash-screen"]').classList.contains('show')){
