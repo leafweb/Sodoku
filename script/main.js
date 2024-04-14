@@ -253,7 +253,6 @@ function Home(){
    Show(navbar,'float');
    Page("home")
 }
-setTimeout(Home,4000);
 // History
 let SetHistory = {
    table: ()=>{
