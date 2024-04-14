@@ -1,13 +1,17 @@
 /* font */
+/*
 @font-face {
    font-family: "RobotoFlex";
    src: url(font/RobotoFlex.ttf);
 }
+*/
 /*** icon ***/
+/*
 @font-face {
    font-family: "symbol";
    src: url(font/symbol.ttf);
 }
+*/
 .symbol {
    font-family: "symbol";
    font-weight: normal;
