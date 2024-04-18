@@ -521,13 +521,13 @@
    <script>
       var font1 = new FontFace('symbol', 'url(style/font/symbol.ttf)');
       var font2 = new FontFace('RobotoFlex', 'url(style/font/RobotoFlex.ttf)');
-
       Promise.all([font1.load(), font2.load()])
          .then(() => {
             document.fonts.add(font1);
             document.fonts.add(font2);
             setTimeout(Home, 2000);
-         }).catch((err) => console.error(err));
+         })
+         .catch((err) => console.error(err));
    </script>
 </body>
 </html>

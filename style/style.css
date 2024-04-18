@@ -554,9 +554,7 @@ page[name="p-game"].show #table>div>div {
 }
 /* p-setting */
 page[name="p-settings"] {
-   background: linear-gradient(25deg, var(--background) 40%, transparent 41%, transparent 59%, var(--background) 60%), linear-gradient(90deg, transparent 45%, var(--surface) 45%, var(--surface) 55%, transparent 55%, transparent 20%, var(--surface) 20%, var(--surface) 30%, transparent 30%), linear-gradient(90deg, var(--surface) 9%, transparent 10%);
-   background-size: 4em 4em;
-   background-color: var(--background);
+   background: var(--background);
 }
 page[name="p-settings"] article {
    padding: 10px;
