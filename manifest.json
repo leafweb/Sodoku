@@ -4,7 +4,6 @@
    "description": "Sodoku Game",
    "display": "standalone",
    "background_color": "hsl(240,100%,40%)",
-   "theme_color": "hsl(240,100%,40%)",
    "icons": [
       {
          "src": "image/icon(1000).png",
